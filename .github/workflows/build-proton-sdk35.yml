@@ -28,6 +28,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+
+      - name: Overlay Proton 9 Wine source
+        run: |
+          git remote add gamenative https://github.com/GameNative/proton-wine.git
+          git fetch gamenative proton_9.0 --depth=1
+          git checkout gamenative/proton_9.0 -- dlls server include loader programs tools
       
       - name: Set up build environment
         run: |
