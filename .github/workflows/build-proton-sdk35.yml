@@ -98,7 +98,12 @@ jobs:
       - name: Autogen
         run: |
           bash build-scripts/build-step0-autogen.sh
-      
+          
+      - name: Apply Wine 8.13 WSAEnumNetworkEvents network fix
+        run: |
+          curl -sL "https://raw.githubusercontent.com/wine-mirror/wine/wine-8.13/dlls/ws2_32/socket.c" \
+            -o dlls/ws2_32/socket.c
+            
       - name: Cache wine-tools
         id: cache-wine-tools
         uses: actions/cache@v4
