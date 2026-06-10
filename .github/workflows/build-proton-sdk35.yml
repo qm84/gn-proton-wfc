@@ -33,7 +33,9 @@ jobs:
         run: |
           git remote add gamenative https://github.com/GameNative/proton-wine.git
           git fetch gamenative proton_9.0 --depth=1
+          git fetch gamenative proton_10.0 --depth=1
           git checkout gamenative/proton_9.0 -- dlls server include loader programs tools
+          git checkout gamenative/proton_10.0 -- build-scripts android
       
       - name: Set up build environment
         run: |
